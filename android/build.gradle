@@ -1,35 +1,19 @@
-group 'com.example.android_dynamic_icon'
-version '1.0-SNAPSHOT'
-
-buildscript {
-    ext.kotlin_version = '1.9.22'
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.4'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+group = "com.example.android_dynamic_icon"
+version = "1.0-SNAPSHOT"
 
 android {
-    namespace 'com.example.android_dynamic_icon'
-    compileSdk 35   // bump to 35
+    namespace "com.example.android_dynamic_icon"
+    compileSdk 35
 
     defaultConfig {
         minSdk 23
         targetSdk 35
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     compileOptions {
@@ -38,15 +22,10 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '11'
-    }
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+        jvmTarget = "11"
     }
 }
 
 dependencies {
     implementation "androidx.lifecycle:lifecycle-common:2.8.7"
-    // Flutter embedding is automatically added, no need to add io.flutter:flutter_embedding_release
 }
